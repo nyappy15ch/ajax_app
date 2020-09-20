@@ -14,8 +14,10 @@ class PostsController < ApplicationController
       post.update(checked: false)
     else
       post.update(checked: true)
+    end
+    item = Post.find(params[:id])
+    render json: { post: item }#itemを代入しているpost変数がレスポンスで使用できるようになる
+    #レスポンスをjson形式で返すためにrenderを使用している。
   end
-
-  item = Post.find(params[:id])
-  render json: { post: item }
+  
 end
